@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Questão 5</title>
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+
+<body>
+
+    <p>
+        Questão:
+        5) Escreva um programa que inverta os caracteres de um string.
+    </p>
+
+    <p id="resultado"></p>
+
+    <script>
+
+        let str = prompt("Digite uma string para ser invertida:");
+        let novaStr = ''
+
+         for (let i = str.length - 1; i >= 0; i--) {
+           novaStr += str[i];
+         }
+
+        resultado.textContent = ("String invertida = " + novaStr);
+    </script>
+</body>
+
+</html>

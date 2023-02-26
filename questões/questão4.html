@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questão 4</title>
+    <link rel="stylesheet" href="stylesheet.css">
+
+</head>
+
+<body>
+
+    <p>
+        Questão:
+        4) Dado o valor de faturamento mensal de uma distribuidora, detalhado por estado:
+
+        <br>SP - R$67.836,43 <br>
+        RJ - R$36.678,66 <br>
+        MG - R$29.229,88 <br>
+        ES - R$27.165,48 <br>
+        Outros - R$19.849,53<br>
+        
+        Escreva um programa na linguagem que desejar onde calcule o percentual de representação que cada estado teve dentro do valor total mensal da distribuidora.
+
+    </p>
+
+    <button onclick="exibirDados()">Verificar Resultados</button>
+    <ul id="resultado"></ul>
+
+    <script>
+        // Valor de faturamento mensal de cada estado
+        const faturamento = {
+            "SP": 67836.43,
+            "RJ": 36678.66,
+            "MG": 29229.88,
+            "ES": 27165.48,
+            "Outros": 19849.53
+        };
+
+        // Total do faturamento mensal da distribuidora
+        const totalFaturamento = Object.values(faturamento).reduce((total, valor) => total + valor);
+
+        // Calcula o percentual de representação de cada estado
+        const percentuais = {};
+        for (let estado in faturamento) {
+            percentuais[estado] = (faturamento[estado] / totalFaturamento) * 100;
+        }
+
+        // Exibe os resultados
+        function exibirDados() {
+            let resultado = document.getElementById("resultado");
+            resultado.innerHTML = "";
+            for (let estado in percentuais) {
+                let li = document.createElement("li");
+                li.textContent = `${estado}: ${percentuais[estado].toFixed(2)}%`;
+                resultado.appendChild(li);
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questão 3</title>
+    <link rel="stylesheet" href="stylesheet.css">
+
+</head>
+
+<body>
+
+    <p>
+        Questão:
+        3) Dado um vetor que guarda o valor de faturamento diário de uma distribuidora, faça um programa, na linguagem
+        que desejar, que calcule e retorne:
+        <br> • O menor valor de faturamento ocorrido em um dia do mês;<br>
+        • O maior valor de faturamento ocorrido em um dia do mês;<br>
+        • Número de dias no mês em que o valor de faturamento diário foi superior à média mensal.<br><br>
+
+        IMPORTANTE:
+        a) Usar o json ou xml disponível como fonte dos dados do faturamento mensal;<br>
+        b) Podem existir dias sem faturamento, como nos finais de semana e feriados. Estes dias devem ser ignorados no
+        cálculo da média;
+
+    </p>
+
+    <button onclick="exibirDados()">Verificar Resultados</button>
+    <p id="resultado1"></p>
+    <p id="resultado2"></p>
+    <p id="resultado3"></p>
+
+    <script>
+        const faturamentoDiario = [
+            { "dia": 1, "valor": 22174.1664 },
+            { "dia": 2, "valor": 24537.6698 },
+            { "dia": 3, "valor": 26139.6134 },
+            { "dia": 4, "valor": 0.0 },
+            { "dia": 5, "valor": 0.0 },
+            { "dia": 6, "valor": 26742.6612 },
+            { "dia": 7, "valor": 0.0 },
+            { "dia": 8, "valor": 42889.2258 },
+            { "dia": 9, "valor": 46251.174 },
+            { "dia": 10, "valor": 11191.4722 },
+            { "dia": 11, "valor": 0.0 },
+            { "dia": 12, "valor": 0.0 },
+            { "dia": 13, "valor": 3847.4823 },
+            { "dia": 14, "valor": 373.7838 },
+            { "dia": 15, "valor": 2659.7563 },
+            { "dia": 16, "valor": 48924.2448 },
+            { "dia": 17, "valor": 18419.2614 },
+            { "dia": 18, "valor": 0.0 },
+            { "dia": 19, "valor": 0.0 },
+            { "dia": 20, "valor": 35240.1826 },
+            { "dia": 21, "valor": 43829.1667 },
+            { "dia": 22, "valor": 18235.6852 },
+            { "dia": 23, "valor": 4355.0662 },
+            { "dia": 24, "valor": 13327.1025 },
+            { "dia": 25, "valor": 0.0 },
+            { "dia": 26, "valor": 0.0 },
+            { "dia": 27, "valor": 25681.8318 },
+            { "dia": 28, "valor": 1718.1221 },
+            { "dia": 29, "valor": 13220.495 },
+            { "dia": 30, "valor": 8414.61 }
+        ];
+
+        let menorValor = Infinity;
+        let maiorValor = -Infinity;
+        for (let i = 0; i < faturamentoDiario.length; i++) {
+            const valor = faturamentoDiario[i].valor;
+            if (valor < menorValor) {
+                menorValor = valor;
+            }
+            if (valor > maiorValor) {
+                maiorValor = valor;
+            }
+        }
+
+        let somaValores = 0;
+        for (let i = 0; i < faturamentoDiario.length; i++) {
+            somaValores += faturamentoDiario[i].valor;
+        }
+        const mediaMensal = somaValores / faturamentoDiario.length;
+
+
+        function exibirDados() {
+            let resultado1 = document.getElementById("resultado1");
+            let resultado2 = document.getElementById("resultado2");
+            let resultado3 = document.getElementById("resultado3");
+
+            resultado1.textContent = ("Menor valor de faturamento diário: " + menorValor);
+            resultado2.textContent = ("Maior valor de faturamento diário: " + maiorValor);
+            resultado3.textContent = ("Média mensal de faturamento diário: " + mediaMensal);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Verificar número de Fibonacci</title>
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+    <p>
+        Questão:
+        2) Dado a sequência de Fibonacci, onde se inicia por 0 e 1 e o próximo valor sempre será a soma dos 2 valores anteriores (exemplo: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34...), escreva um programa na linguagem que desejar onde, informado um número, ele calcule a sequência de Fibonacci e retorne uma mensagem avisando se o número informado pertence ou não a sequência.
+        IMPORTANTE:
+        Esse número pode ser informado através de qualquer entrada de sua preferência ou pode ser previamente definido no código;
+    </p>
+    <br/>
+    <label for="numero">Insira um número</label>
+    <input type="number" id="numero"><br>
+
+    <button onclick="exibirDados()">Verificar</button>
+
+    
+    <p id="resultado"></p>
+    <p id="sequencia"></p>
+
+    <script>
+        function fibonacci(n) {
+            if (n <= 1) {
+                return n;
+            } else {
+                return fibonacci(n - 1) + fibonacci(n - 2);
+            }
+        }
+
+        function exibirDados() {
+            let num = document.getElementById("numero").value;
+
+            // Verificando se o número pertence à sequência de Fibonacci
+            let i = 0;
+            let fib;
+            let seque = ''
+            while (fibonacci(i) <= num) {
+                fib = fibonacci(i);
+                i++;
+              seque += `${fib}`
+            }
+
+            let sequencia = document.getElementById("sequencia");
+            sequencia.textContent = `Mostrando sequencia -> ${seque}`
+
+            let resultado = document.getElementById("resultado");
+            if (fib == num) {
+                resultado.textContent = `${num} pertence à sequência de Fibonacci.`;
+            } else {
+                resultado.textContent = `${num} não pertence à sequência de Fibonacci.`;
+            }
+        }
+    </script>
+</body>
+</html>
+
+
+
